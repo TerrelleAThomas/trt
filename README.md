@@ -108,3 +108,50 @@
 | ReportID         | ObjectId             | Primary Key       | Yes      | Unique identifier                  |
 | Type             | String               |                   |          | Type of report                     |
 | Description      | String               |                   |          | Description of the report          |
+
+Here's the provided information formatted as a Markdown table suitable for GitHub:
+
+### IGDB Table
+| Field        | Field Type | Type       | Required | Description                   |
+|--------------|------------|------------|----------|-------------------------------|
+| IGDBID       | ObjectId   | Primary Key| Yes      | Unique identifier from IGDB   |
+| Title        | String     |            | Yes      | Title of the game             |
+| Genre        | String     |            |          | Genre of the game             |
+| Platform     | String     |            |          | Game platform                 |
+| ReleaseDate  | Date       |            |          | Release date of the game      |
+| Description  | String     |            |          | Description of the game       |
+| IGDBRating   | Float      |            |          | IGDB rating                   |
+| Creator      | String     |            |          | Game creator/developer        |
+
+### GameTrack Database Table
+| Field        | Field Type | Type            | Required | Description                   |
+|--------------|------------|-----------------|----------|-------------------------------|
+| UserGameID   | ObjectId   | Primary Key     | Yes      | Unique identifier             |
+| UserID       | ObjectId   | Foreign Key (User)| Yes    | References User               |
+| GameID       | ObjectId   | Foreign Key (IGDB)| Yes    | References IGDB               |
+| Playtime     | Int        |                 |          | Total playtime                |
+| LastPlayed   | Date       |                 |          | Last play date                |
+| Status       | String     |                 |          | Game status                   |
+
+### Posts Table
+| Field        | Field Type | Type            | Required | Description                   |
+|--------------|------------|-----------------|----------|-------------------------------|
+| PostID       | ObjectId   | Primary Key     | Yes      | Unique identifier             |
+| UserID       | ObjectId   | Foreign Key (User)| Yes    | References User               |
+| GameID       | ObjectId   | Foreign Key (IGDB)| Yes    | References IGDB               |
+| Title        | String     |                 | Yes      | Post Title                    |
+| Content      | Text       |                 |          | Post content                  |
+| CreationDate | Date       |                 | Yes      | Creation date                 |
+| UpdateDate   | Date       |                 |          | Last update date              |
+| DeleteDate   | Date       |                 |          | Deletion date                 |
+
+### Comment Table
+| Field        | Field Type | Type            | Required | Description                   |
+|--------------|------------|-----------------|----------|-------------------------------|
+| CommentID    | ObjectId   | Primary Key     | Yes      | Unique identifier             |
+| PostID       | ObjectId   | Foreign Key (Posts)| Yes   | References Posts              |
+| UserID       | ObjectId   | Foreign Key (User)| Yes    | References User               |
+| Content      | Text       |                 | Yes      | Comment content               |
+| CreationDate | Date       |                 | Yes      | Creation date                 |
+| UpdateDate   | Date       |                 |          | Last update date              |
+| DeleteDate   | Date       |                 |          | Deletion date                 |
